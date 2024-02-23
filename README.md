@@ -1,2 +1,85 @@
-# birt-docker-container
-Makes life easier to run BIRT on docker
+## Introduction
+
+The main goal of this project is to make it easier get BIRT up and running with docker.
+I created this project because I have a php app that lacks a good report system and BIRT has multiple great platforms that helps us to design, view and export data.
+
+## Versions
+
+##### Dependencies used to build the docker container
+These are the versions of the dependencies currently using to build the container. 
+```sh
+BIRT Runtime: birt-runtime-4.14.0-202312020807.zip
+BIRT Designer: 
+Tomcat: Tomcat 9.0.86
+JDK: Jdk17
+JSTL Taglibs: 1.2.5 # Used by the test.jsp page
+```
+
+##### Other dependencies
+I'm listing these below just to be consistent.
+```txt
+BIRT Designer: birt-report-designer-all-in-one-4.14.0-202312020807
+```
+
+## Setup
+Notice that we have a ```.env``` file that will be passed into the Docker container, so Tomcat jndi context can connect to the database.
+
+```
+JAVA_OPTS= -Ddb.server=127.0.0.1 -Ddb.port=3306 -Ddb.username=name -Ddb.password=pass -Ddb.database=yourdatabase -Ddb.jndiname=jdbc/birtdbcontext -Ddb.driverclass=com.mysql.cj.jdbc.Driver
+```
+
+Currently I have is working with Mysql 8, but in the future we can add more jdbc database drivers. 
+Modify the .env values according to your needs.
+
+## Building and Running the Docker container
+
+##### Build
+
+```sh
+docker build -t container-registry/birt:latest -f ./Dockerfile .
+```
+##### Run
+
+```sh
+docker run -d --network=your-docker-network-if-you-have-one -p 9999:8080 --name birt --env-file ./Docker/birt/.env -v /your-volume-path:/usr/local/tomcat/webapps/ROOT/report container-registry/birt:latest
+
+# --network=your-docker-network-if-you-have-one - This part of the command can be removed if you don't use a separate docker netowork
+```
+
+
+Now you should be able to pull up your browser tab and navigate to http://127.0.0.1:9999 to land on the BIRT home page.
+
+## Miscellaneous and Technical Stuff
+
+This part is not necessary to use this project, these are just technical details for nerd people. So if you ever update anything to adapt your needs you'll know the hoops.
+
+##### Tomcat Context Jndi
+
+JNDI connection string takes precedence over JDBC connection string when the BIRT reports tries to connect to the database. While disigning  reports on your development workstation we often don't connect to the production database to create the report. So setup the Jdbc connection on your BIRT report datasource to connect to your development database and have the JNDI url pointing to the production database you desire to connect when the report is deployed to the production environment.
+This explains why I had to setup the JNDI context on Tomcat, is so I don't have to be editing the .rptdesing connection string every time I deploy a report to production.
+
+This is the Tomcat docs I followed to be able to setup the context.xml [JNDI Datasource How-To](https://tomcat.apache.org/tomcat-9.0-doc/jndi-datasource-examples-howto.html). 
+I basically had to edit the ```context.xml``` file adding the ```<Resource.../>``` tag to connect to the database I want Tomcat to connect to, I also had to modify the ```web.xml``` file that comes with BIRT runtime to use the Tomcat jndi context. 
+
+###### context.xml 
+
+![context.xml](./docs/assets/img/context.xml-modification.png "Modification of context.xml")
+
+###### web.xml 
+
+Added the JNDI connection to the web.xml
+![web.xml](./docs/assets/img/web.xml-modification.png "Modification of web.xml")
+
+Had to modify the BIRT_VIEWER_WORKING_FOLDER to customize the .rptdesign file location.
+![BIRT_VIEWER_WORKING_FOLDER](./docs/assets/img/web.xml-modification1.png "Modification of BIRT_VIEWER_WORKING_FOLDER path")
+
+#####
+
+##### Check if the JNDI is working properly with Tomcat
+I created a ```test.jsp``` page that can be accessed here http://127.0.0.1:9999/test.jsp that will load data from a users table. Feel free to modify the select statement on that page and adapt it to your needs.FYI Make sure your database have the table that the test.jsp is trying to access.
+
+##### BIRT .rptdesign datasource example
+
+Since I had issues setting up the .rptdesign file to connect to my localhost while design and development and connect JNDI for production, I'm adding a screenshot to the BIRT designer datasource.
+
+![Birt Datasource Example](./docs/assets/img/birt-datasource-example.png "Birt Datasource Example for JDBC and JNDI")
