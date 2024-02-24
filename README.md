@@ -9,10 +9,10 @@ I created this project because I have a php app that lacks a good report system 
 These are the versions of the dependencies currently using to build the container. 
 ```sh
 BIRT Runtime: birt-runtime-4.14.0-202312020807.zip
-BIRT Designer: 
 Tomcat: Tomcat 9.0.86
 JDK: Jdk17
 JSTL Taglibs: 1.2.5 # Used by the test.jsp page
+Apache commons-logging-1.3.0 # Production server throws class not found exception without it
 ```
 
 ##### Other dependencies
@@ -43,7 +43,12 @@ docker build -t container-registry/birt:latest -f ./Dockerfile .
 ```sh
 docker run -d --network=your-docker-network-if-you-have-one -p 9999:8080 --name birt --env-file ./Docker/birt/.env -v /your-volume-path:/usr/local/tomcat/webapps/ROOT/report container-registry/birt:latest
 
-# --network=your-docker-network-if-you-have-one - This part of the command can be removed if you don't use a separate docker netowork
+# --network=your-docker-network-if-you-have-one - This part of the command can be removed if you don't use a separate docker netowork. but if you are connecting to the hosting physical machine from the container, you may need the command below
+```
+
+```sh
+# connects to the host outside the docker container : http://host.docker.internal:9999/
+docker run -d --add-host host.docker.internal:host-gateway -p 9999:8080 --name birt --env-file ./Docker/birt/.env -v  /your-volume-path:/usr/local/tomcat/webapps/ROOT/report container-registry/birt-docker:latest
 ```
 
 
@@ -83,3 +88,13 @@ I created a ```test.jsp``` page that can be accessed here http://127.0.0.1:9999/
 Since I had issues setting up the .rptdesign file to connect to my localhost while design and development and connect JNDI for production, I'm adding a screenshot to the BIRT designer datasource.
 
 ![Birt Datasource Example](./docs/assets/img/birt-datasource-example.png "Birt Datasource Example for JDBC and JNDI")
+
+##### Assets being served as HTTP instead of HTTPS
+Had issues with running the container behind a nginx proxy where the frameset assets were being served as http even though the domain accessing the proxy was https. The browser were throwing an error of "mixed content".
+I wasn't sure the correct way to resolve this issue, but I added the meta tag below to force the browser to use https on assets that were being served as http.
+
+```html
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+```
+###### Files I added the meta tag
+![Modified files with the meta tag](./docs/assets/img/meta-tag-mixed-content.png "Modified files with the meta tag")

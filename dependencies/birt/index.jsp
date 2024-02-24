@@ -145,6 +145,11 @@
 								<img src="webcontent/birt/images/Link_Icon.png" alt="Link" style="margin-left:24px; margin-right:8px; vertical-align:middle; height:16px;">
 								<span>View Example 02: Integrated chart report</span>
 							</a>
+						<p>
+								<a href="<%= request.getContextPath( ) + "/frameset?__report=fb-test.rptdesign" %>" target="blank">
+									<img src="webcontent/birt/images/Link_Icon.png" alt="Link" style="margin-left:24px; margin-right:8px; vertical-align:middle; height:16px;">
+									<span>View Example 03: Firebird example</span>
+								</a>
 						<div style="background-color: #4682b4; height:2px;"></div>
 					</td>
 				</tr>
