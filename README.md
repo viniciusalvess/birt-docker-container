@@ -22,10 +22,15 @@ BIRT Designer: birt-report-designer-all-in-one-4.14.0-202312020807
 ```
 
 ## Setup
-Notice that we have a ```.env``` file that will be passed into the Docker container, so Tomcat jndi context can connect to the database.
+Notice that we have a ```.env-example``` file that will be passed into the Docker container, so Tomcat jndi context can connect to the database.
+You have to rename this file to ```.env``` and setup your database connection before running the container.
 
 ```
-JAVA_OPTS= -Ddb.server=127.0.0.1 -Ddb.port=3306 -Ddb.username=name -Ddb.password=pass -Ddb.database=yourdatabase -Ddb.jndiname=jdbc/birtdbcontext -Ddb.driverclass=com.mysql.cj.jdbc.Driver
+# MySql
+JAVA_OPTS= -Ddb.server=your-server -Ddb.port=3306 -Ddb.username=root -Ddb.password=yourpass -Ddb.database=yourdb -Ddb.jndiname=jdbc/birtdbcontext -Ddb.driverclass=com.mysql.cj.jdbc.Driver -Ddb.type=mysql
+
+# Firebird
+#JAVA_OPTS= -Ddb.server=host.docker.internal -Ddb.port=3050 -Ddb.username=sysdba -Ddb.password=yourpass -Ddb.database=path-to-fdb-file -Ddb.jndiname=jdbc/birtdbcontext -Ddb.driverclass=org.firebirdsql.jdbc.FBDriver -Ddb.type=firebirdsql
 ```
 
 Currently I have is working with Mysql 8, but in the future we can add more jdbc database drivers. 
@@ -35,6 +40,12 @@ Modify the .env values according to your needs.
 
 ##### Build
 
+###### Run from [Docker Hub](https://hub.docker.com/)
+```sh
+docker pull viniciusalvess/birt-docker
+```
+
+###### Build and Run from cloned project
 ```sh
 docker build -t container-registry/birt:latest -f ./Dockerfile .
 ```

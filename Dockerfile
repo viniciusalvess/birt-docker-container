@@ -11,11 +11,11 @@ COPY ./Docker/birt/vin-run-container.sh /usr/local/tomcat/
 COPY ./Docker/birt/dependencies/tomcat/conf/context.xml /usr/local/tomcat/conf/
 
 # Copy the taglibs that is used by the test.jsp to make sure the jndi context is connected and working
-COPY ./Docker/birt/dependencies/jstl/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+COPY ./Docker/birt/dependencies/other/jstl/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 # Copy MySql drivers
-COPY ./Docker/birt/dependencies/jdbc/mysql/ /usr/local/tomcat/lib/
-COPY ./Docker/birt/dependencies/jdbc/mysql/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+COPY ./Docker/birt/dependencies/other/jdbc/mysql/ /usr/local/tomcat/lib/
+COPY ./Docker/birt/dependencies/other/jdbc/mysql/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 # Copy Other dependencies
 COPY ./Docker/birt/dependencies/other/commons-logging/commons-logging-1.3.0.jar /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
