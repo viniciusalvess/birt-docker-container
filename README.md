@@ -40,7 +40,7 @@ Modify the .env values according to your needs.
 
 ##### Build
 
-###### Run from [Docker Hub](https://hub.docker.com/)
+###### Run from [Docker Hub](https://hub.docker.com/r/viniciusalvess/birt-docker)
 ```sh
 docker pull viniciusalvess/birt-docker
 ```
