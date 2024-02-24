@@ -10,11 +10,10 @@
 -----------------------------------------------------------------------------%>
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page session="false" buffer="none" %>
-<%@ page import="org.eclipse.birt.report.presentation.aggregation.IFragment,
+<%@ page import="org.eclipse.birt.report.resource.BirtResources,
 				 org.eclipse.birt.report.context.BaseAttributeBean,
-				 org.eclipse.birt.report.resource.ResourceConstants,
-				 org.eclipse.birt.report.resource.BirtResources,
-				 org.eclipse.birt.report.utility.ParameterAccessor" %>
+				 org.eclipse.birt.report.utility.ParameterAccessor,
+ 				 org.eclipse.birt.report.presentation.aggregation.IFragment" %>
 
 <%-----------------------------------------------------------------------------
 	Expected java beans
@@ -34,13 +33,11 @@
 	baseHref += request.getContextPath( ) + fragment.getJSPRootPath( );
 %>
 
-<%-----------------------------------------------------------------------------
-	Viewer run fragment
------------------------------------------------------------------------------%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 <HTML lang="<%= ParameterAccessor.htmlEncode( attributeBean.getLanguage() ) %>">
 	<HEAD>
-		<TITLE><%= ParameterAccessor.htmlEncode( attributeBean.getReportTitle( ) ) %></TITLE>
+	    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+		<TITLE>PARAMETER SELECTION PAGE</TITLE>
 		<BASE href="<%= baseHref %>" >
 		
 		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
@@ -58,8 +55,8 @@
 		<LINK REL="stylesheet" HREF="birt/styles/dialogbase.css" MEDIA="screen" TYPE="text/css"/>	
 		<%
 		}
-		%>
-			
+		%>			
+
 		<script type="text/javascript">
 			<%
 			if( request.getAttribute("SoapURL") != null )
@@ -78,7 +75,7 @@
 			var rtl = <%= attributeBean.isRtl( ) %>;
 		</script>
 		
-		<script src="birt/ajax/utility/Debug.js" type="text/javascript"></script>
+		<SCRIPT SRC="birt/ajax/utility/Debug.js" type="text/javascript"></script>
 		<script src="birt/ajax/lib/prototype.js" type="text/javascript"></script>
 		<script src="birt/ajax/lib/head.js" type="text/javascript"></script>
 		
@@ -110,22 +107,28 @@
 		<script src="birt/ajax/ui/report/BirtReportDocument.js" type="text/javascript"></script>
 
 		<script src="birt/ajax/ui/dialog/AbstractBaseDialog.js" type="text/javascript"></script>
-		<script src="birt/ajax/ui/dialog/BirtTabedDialogBase.js" type="text/javascript"></script>
 		<script src="birt/ajax/ui/dialog/AbstractParameterDialog.js" type="text/javascript"></script>
 		<script src="birt/ajax/ui/dialog/BirtParameterDialog.js" type="text/javascript"></script>
 		<script src="birt/ajax/ui/dialog/AbstractExceptionDialog.js" type="text/javascript"></script>
 		<script src="birt/ajax/ui/dialog/BirtExceptionDialog.js" type="text/javascript"></script>
 		
-		<script src="birt/ajax/utility/BirtPosition.js" type="text/javascript"></script>
+		<SCRIPT SRC="birt/ajax/utility/BirtPosition.js" type="text/javascript"></script>
 
-		<script src="birt/ajax/core/BirtCommunicationManager.js" type="text/javascript"></script>
-		<script src="birt/ajax/core/BirtSoapRequest.js" type="text/javascript"></script>
-		<script src="birt/ajax/core/BirtSoapResponse.js" type="text/javascript"></script>
-		
+		<SCRIPT SRC="birt/ajax/core/BirtCommunicationManager.js" type="text/javascript"></script>
+		<SCRIPT SRC="birt/ajax/core/BirtSoapRequest.js" type="text/javascript"></script>
+		<SCRIPT SRC="birt/ajax/core/BirtSoapResponse.js" type="text/javascript"></script>
+				
 	</HEAD>
-	
-	<BODY CLASS="BirtViewer_Body"  ONLOAD="javascript:init( );" SCROLL="no" LEFTMARGIN='0px' 
-		STYLE='overflow:hidden; direction: <%= attributeBean.isRtl()?"rtl":"ltr" %>'>
+
+	<BODY CLASS="BirtViewer_Body" onload="Javascript:init()" SCROLL="no" LEFTMARGIN='0px' STYLE='overflow:hidden'>
+		<%
+		if( attributeBean.isRtl() )
+		{
+		%>
+		<DIV DIR="rtl">
+		<%
+		}
+		%>
 		<!-- Header section -->
 		<TABLE ID='layout' CELLSPACING='0' CELLPADDING='0' STYLE='width:100%;height:100%'>
 		<%
@@ -135,11 +138,19 @@
 			}
 		%>
 		</TABLE>
+		<%
+		if( attributeBean.isRtl() )
+		{
+		%>
+		</DIV>
+		<%
+		}
+		%>
 	</BODY>
-
+	
 	<%@include file="../common/Locale.jsp" %>	
 	<%@include file="../common/Attributes.jsp" %>	
-
+	
 	<script type="text/javascript">
 	// <![CDATA[
 		var hasSVGSupport = false;
@@ -157,57 +168,40 @@
 	// ]]>
 	</script>
 	
-	<script type="text/vbscript">
+	<SCRIPT TYPE="text/vbscript">
 		On Error Resume Next
 		If useVBMethod = true Then
 		    hasSVGSupport = IsObject(CreateObject("Adobe.SVGCtl"))
 		End If
-	</script>
+	</SCRIPT>
 
-	<script type="text/javascript">
-		var Mask =  new Mask(false); //create mask using "div"
-		var BrowserUtility = new BrowserUtility();
-		DragDrop = new BirtDndManager();
-		
-		var birtReportDocument = new BirtReportDocument( "Document" );
+	<SCRIPT TYPE="text/javascript">		
+		var Mask =  new Mask( false );
+		var BrowserUtility = new BrowserUtility( );
+		var DragDrop = new BirtDndManager( );
+
 		var birtProgressBar = new BirtProgressBar( 'progressBar' );
+		var birtReportDocument = new BirtReportDocument( "Document" );
 
-		var birtParameterDialog = new BirtParameterDialog( 'parameterDialog', 'run' );
-		var birtExceptionDialog = new BirtExceptionDialog( 'exceptionDialog' );
-		
-		function init()
+		var parameterMode;
+		if ( Constants.request.servletPath == Constants.SERVLET_PARAMETER )
 		{
-			soapURL = birtUtility.initSessionId( soapURL );
-		<%
-		if ( attributeBean.isShowParameterPage( ) )
-		{
-		%>
-			birtParameterDialog.__cb_bind( );
-		<%
+			parameterMode = Constants.SERVLET_PARAMETER;
 		}
 		else
 		{
-		%>
-			soapURL = birtUtility.initDPI( soapURL );
-			birtParameterDialog.__init_page_all( );
-		<%
-		}
-		%>
+			parameterMode = Constants.SERVLET_PREVIEW;
 		}
 		
-		// When link to internal bookmark, use javascript to fire an Ajax request
-		function catchBookmark( bookmark )
-		{	
-			var action = window.location.href;
-			var reg = new RegExp( "([^#]*)#.*", "gi" );
-			if( action.search( reg ) >= 0 )
-			{
-				action = action.replace( reg, "$1" );
-			}
-			
-			window.location.href = action + "#" + birtUtility.htmlDecode( bookmark );		
+		var birtParameterDialog = new BirtParameterDialog( 'parameterDialog', parameterMode );
+		var birtExceptionDialog = new BirtExceptionDialog( 'exceptionDialog' );
+		
+		function init( )
+		{					
+			soapURL = birtUtility.initSessionId( soapURL );
+			birtParameterDialog.__cb_bind( );
 		}
 		
-	</script>
+	</SCRIPT>
 </HTML>
 

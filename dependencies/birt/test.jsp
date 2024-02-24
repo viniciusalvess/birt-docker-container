@@ -3,9 +3,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      
-<sql:query var="listUsers" dataSource="jdbc/birtdbcontext">
+    <%-- <sql:query var="listUsers" dataSource="jdbc/birtdbcontext">
     select name, email from users;
+</sql:query> --%>
+
+<sql:query var="listUsers" dataSource="jdbc/birtdbcontext">
+    select first 10 nro_cgc as name, des_razaosocial as email
+    from PESSOAJURIDICA
 </sql:query>
+
+
      
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">

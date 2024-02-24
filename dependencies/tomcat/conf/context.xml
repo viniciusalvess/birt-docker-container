@@ -32,5 +32,5 @@
 	<Resource name="${db.jndiname}" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
                username="${db.username}" password="${db.password}" driverClassName="${db.driverclass}"
-               url="jdbc:mysql://${db.server}:${db.port}/${db.database}"/>
+               url="jdbc:${db.type}://${db.server}:${db.port}/${db.database}"/>
 </Context>

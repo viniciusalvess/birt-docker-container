@@ -40,6 +40,7 @@
 <!DOCTYPE HTML>
 <HTML lang="<%= ParameterAccessor.htmlEncode( attributeBean.getLanguage() ) %>">
 	<HEAD>
+	    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 		<TITLE><%= ParameterAccessor.htmlEncode( attributeBean.getReportTitle( ) ) %></TITLE>
 		<BASE href="<%= baseHref %>" >
 		
