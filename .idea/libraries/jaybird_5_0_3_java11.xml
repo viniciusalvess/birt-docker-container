@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="jaybird-5.0.3.java11">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/dependencies/other/jdbc/firebird/jaybird-5.0.3.java11.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
