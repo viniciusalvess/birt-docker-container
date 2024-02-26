@@ -69,7 +69,7 @@ Now you should be able to pull up your browser tab and navigate to http://127.0.
 
 This part is not necessary to use this project, these are just technical details for nerd people. So if you ever update anything to adapt your needs you'll know the hoops.
 
-##### Tomcat Context Jndi
+### Tomcat Context Jndi
 
 JNDI connection string takes precedence over JDBC connection string when the BIRT reports tries to connect to the database. While disigning  reports on your development workstation we often don't connect to the production database to create the report. So setup the Jdbc connection on your BIRT report datasource to connect to your development database and have the JNDI url pointing to the production database you desire to connect when the report is deployed to the production environment.
 This explains why I had to setup the JNDI context on Tomcat, is so I don't have to be editing the .rptdesing connection string every time I deploy a report to production.
@@ -89,12 +89,10 @@ Added the JNDI connection to the web.xml
 Had to modify the BIRT_VIEWER_WORKING_FOLDER to customize the .rptdesign file location.
 ![BIRT_VIEWER_WORKING_FOLDER](./docs/assets/img/web.xml-modification1.png "Modification of BIRT_VIEWER_WORKING_FOLDER path")
 
-#####
-
-##### Check if the JNDI is working properly with Tomcat
+### Check if the JNDI is working properly with Tomcat
 I created a ```test.jsp``` page that can be accessed here http://127.0.0.1:9999/test.jsp that will load data from a users table. Feel free to modify the select statement on that page and adapt it to your needs.FYI Make sure your database have the table that the test.jsp is trying to access.
 
-##### BIRT .rptdesign datasource example
+### BIRT .rptdesign datasource example
 
 Since I had issues setting up the .rptdesign file to connect to my localhost while design and development and connect JNDI for production, I'm adding a screenshot to the BIRT designer datasource.
 
@@ -107,5 +105,16 @@ I wasn't sure the correct way to resolve this issue, but I added the meta tag be
 ```html
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 ```
-###### Files I added the meta tag
+#### Files I added the meta tag
 ![Modified files with the meta tag](./docs/assets/img/meta-tag-mixed-content.png "Modified files with the meta tag")
+
+### Authentication
+
+Updated the ```FramesetFragment.jsp``` file to evaluate a session id at run time and determine if the user can see the report or not.
+With my case I pass in a ```__sid``` query string parameter and run a query on the database to determine if the user can see the report and I also have the ```useSessionId``` environment variable set to true.
+
+You may have to change it to adapt it to your needs.
+
+![FramesetFragment.jsp changes](./docs/assets/img/frameset-fragment-changes.png "Modified FramesetFragment.jsp")
+
+

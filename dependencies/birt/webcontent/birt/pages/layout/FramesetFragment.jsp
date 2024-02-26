@@ -17,6 +17,28 @@
 				 org.eclipse.birt.report.utility.ParameterAccessor" %>
 
 <%-----------------------------------------------------------------------------
+	viniciusalvess changes to adapt the authentication system
+-----------------------------------------------------------------------------%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<c:if test="${System.getProperty(\"useSessionId\") eq 'true'}">
+
+	<sql:query var="sidRs" dataSource="jdbc/birtdbcontext">
+		select b.id from users a
+		inner join sessions b on a.id = b.user_id
+		where b.id = '${param.__sid}'
+	</sql:query>
+
+	<c:choose>
+		<c:when test="${(sidRs.rowCount == 0) or (param.__sid == '')}">
+			<c:out value="Unauthorized" />
+			<% if(true)return; %>
+		</c:when>
+	</c:choose>
+</c:if>
+
+<%-----------------------------------------------------------------------------
 	Expected java beans
 -----------------------------------------------------------------------------%>
 <jsp:useBean id="fragment" type="org.eclipse.birt.report.presentation.aggregation.IFragment" scope="request" />
