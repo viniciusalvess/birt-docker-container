@@ -1,3 +1,4 @@
 deploy-dockerhub.sh
 deploy-localhost.sh
 .env
+.idea
