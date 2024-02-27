@@ -136,7 +136,7 @@
 						</div>
 						<div style="background-color: #4682b4; height:2px;"></div>
 						<p>
-							<a href="<%= request.getContextPath( ) + "/frameset?__report=example_simple.rptdesign&paramString=my+parameter&paramInteger=2&paramList=2" %>" target="blank">
+							<a href="<%= request.getContextPath( ) + "/frameset?__report=example_simple_old1.rptdesign&paramString=my+parameter&paramInteger=2&paramList=2" %>" target="blank">
 								<img src="webcontent/birt/images/Link_Icon.png" alt="Link" style="margin-left:24px; margin-right:8px; vertical-align:middle; height:16px;">
 								<span>View Example 01: Integrated simple report</span>
 							</a>

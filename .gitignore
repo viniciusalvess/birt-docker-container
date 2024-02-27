@@ -4,3 +4,5 @@ deploy-localhost.sh
 .idea
 dependencies/birt/report_default/*
 !dependencies/birt/report_default/.gitkeep
+!dependencies/birt/report_default/example_chart.rptdesign
+!dependencies/birt/report_default/example_simple.rptdesign
