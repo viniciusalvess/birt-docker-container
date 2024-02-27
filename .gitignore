@@ -2,3 +2,5 @@ deploy-dockerhub.sh
 deploy-localhost.sh
 .env
 .idea
+dependencies/birt/report_default/*
+!dependencies/birt/report_default/.gitkeep
