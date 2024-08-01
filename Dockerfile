@@ -23,6 +23,10 @@ COPY ./dependencies/other/commons-logging/commons-logging-1.3.0.jar /usr/local/t
 # Copy Firebird drivers
 COPY ./dependencies/other/jdbc/firebird/ /usr/local/tomcat/lib/
 COPY ./dependencies/other/jdbc/firebird/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+COPY ./dependencies/other/lang/pt_BR/eclipse/plugins/ /usr/local/tomcat/lib/
+COPY ./dependencies/other/lang/pt_BR/eclipse/plugins/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+COPY ./dependencies/other/mail/ /usr/local/tomcat/lib/
+COPY ./dependencies/other/mail/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 # Map Reports folder
 VOLUME /usr/local/tomcat/webapps/ROOT/report
