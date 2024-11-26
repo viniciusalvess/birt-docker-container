@@ -1,5 +1,7 @@
 deploy-dockerhub.sh
 deploy-localhost.sh
+vin-run-container.sh
+deploy-localhost-no-copy.sh
 .env
 .idea
 dependencies/birt/report_default/*

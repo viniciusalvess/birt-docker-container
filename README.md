@@ -42,24 +42,24 @@ Modify the .env values according to your needs.
 
 ###### Run from [Docker Hub](https://hub.docker.com/r/viniciusalvess/birt-docker)
 ```sh
-docker pull viniciusalvess/birt-docker
+docker pull viniciusalvess/birt-docker:4.17.0
 ```
 
 ###### Build and Run from cloned project
 ```sh
-docker build -t container-registry/birt:latest -f ./Dockerfile .
+docker build -t container-registry/birt:4.17.0 -f ./Dockerfile .
 ```
 ##### Run
 
 ```sh
-docker run -d --network=your-docker-network-if-you-have-one -p 9999:8080 --name birt --env-file ./Docker/birt/.env -v /your-volume-path:/usr/local/tomcat/webapps/ROOT/report container-registry/birt:latest
+docker run -d --network=your-docker-network-if-you-have-one -p 9999:8080 --name birt --env-file ./Docker/birt/.env -v /your-volume-path:/usr/local/tomcat/webapps/ROOT/report container-registry/birt:4.17.0
 
 # --network=your-docker-network-if-you-have-one - This part of the command can be removed if you don't use a separate docker netowork. but if you are connecting to the hosting physical machine from the container, you may need the command below
 ```
 
 ```sh
 # connects to the host outside the docker container : http://host.docker.internal:9999/
-docker run -d --add-host host.docker.internal:host-gateway -p 9999:8080 --name birt --env-file ./Docker/birt/.env -v  /your-volume-path:/usr/local/tomcat/webapps/ROOT/report container-registry/birt-docker:latest
+docker run -d --add-host host.docker.internal:host-gateway -p 9999:8080 --name birt --env-file ./Docker/birt/.env -v  /your-volume-path:/usr/local/tomcat/webapps/ROOT/report container-registry/birt-docker:4.17.0
 ```
 
 
