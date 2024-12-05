@@ -9,6 +9,7 @@ COPY ./dependencies/birt/ /usr/local/tomcat/webapps/ROOT/
 # Copy Tomcat stuff
 COPY ./vin-run-container.sh /usr/local/tomcat/
 COPY ./dependencies/tomcat/conf/context.xml /usr/local/tomcat/conf/
+COPY ./dependencies/tomcat/conf/server.xml /usr/local/tomcat/conf/
 
 # Copy the taglibs that is used by the test.jsp to make sure the jndi context is connected and working
 COPY ./dependencies/other/jstl/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
