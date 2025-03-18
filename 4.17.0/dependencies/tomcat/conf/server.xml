@@ -67,6 +67,7 @@
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
     <!-- Birt is not generating the correct url for assets behind a reverse proxy. It adds :80 to the url if this connector is without scheme="https" secure="true" -->
+    <!-- If you want to run this container on localhost set the properties below to scheme="http" secure="false" -->
     <Connector port="8080" protocol="HTTP/1.1"
                scheme="https" secure="true" 
                connectionTimeout="20000"

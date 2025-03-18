@@ -117,4 +117,18 @@ You may have to change it to adapt it to your needs.
 
 ![FramesetFragment.jsp changes](./docs/assets/img/frameset-fragment-changes.png "Modified FramesetFragment.jsp")
 
+### Running on Http without ssl on localhost
+
+If you need to run it locally without the ssl, you'll have to change the server.xml file to look like the code below
+
+```xml
+<Connector port="8080" protocol="HTTP/1.1"
+               scheme="http" secure="false" 
+               connectionTimeout="20000"
+               redirectPort="8443"
+               maxParameterCount="1000"
+               />
+```
+
+
 

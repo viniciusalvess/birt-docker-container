@@ -1,4 +1,5 @@
 deploy-dockerhub.sh
+deploy-dockerhub-dev.sh
 deploy-localhost.sh
 vin-run-container.sh
 deploy-localhost-no-copy.sh
