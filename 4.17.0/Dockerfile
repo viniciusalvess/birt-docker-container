@@ -1,7 +1,7 @@
 FROM tomcat:9-jdk17
 
 # Update and install vi to edit files inside the container if necessary
-RUN apt update -y && apt install vim -y
+RUN apt update -y && apt install vim -y fonts-dejavu-core fonts-dejavu-extra
 
 # Copy BIRT
 COPY ./dependencies/birt/ /usr/local/tomcat/webapps/ROOT/
@@ -28,6 +28,10 @@ COPY ./dependencies/other/lang/pt_BR/eclipse/plugins/ /usr/local/tomcat/lib/
 COPY ./dependencies/other/lang/pt_BR/eclipse/plugins/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 COPY ./dependencies/other/mail/ /usr/local/tomcat/lib/
 COPY ./dependencies/other/mail/ /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+
+COPY ./dependencies/fonts/segoe-ui/*.ttf /usr/share/fonts/truetype/
+
+RUN fc-cache -fv
 
 # Map Reports folder
 VOLUME /usr/local/tomcat/webapps/ROOT/report
