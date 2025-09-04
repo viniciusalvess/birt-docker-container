@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<font-config>
+
+    <font-path path="/usr/share/fonts/truetype/" />
+
+    <font-aliases>
+        <mapping name="sans-serif" font-family="DejaVu Sans, Arial, Helvetica" />
+        <mapping name="serif" font-family="DejaVu Serif, Times New Roman" />
+        <mapping name="monospace" font-family="DejaVu Sans Mono, Courier New" />
+    </font-aliases>
+
+
+    <font font-family="Segoe UI" catalog="truetype">
+         <normal path="/usr/share/fonts/truetype/Segoe UI.ttf" />
+         <bold path="/usr/share/fonts/truetype/Segoe UI Bold.ttf" />
+         <italic path="/usr/share/fonts/truetype/Segoe UI Italic.ttf" />
+         <bold-italic path="/usr/share/fonts/truetype/Segoe UI BoldItalic.ttf" />
+
+         <pdf-font>
+             <normal path="/usr/share/fonts/truetype/Segoe UI.ttf" />
+             <bold path="/usr/share/fonts/truetype/Segoe UI Bold.ttf" />
+             <italic path="/usr/share/fonts/truetype/Segoe UI Italic.ttf" />
+             <bold-italic path="/usr/share/fonts/truetype/Segoe UI BoldItalic.ttf" />
+         </pdf-font>
+    </font>
+
+    </font-config>
