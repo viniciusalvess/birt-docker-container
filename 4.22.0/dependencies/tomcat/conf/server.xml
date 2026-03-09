@@ -69,7 +69,7 @@
     <!-- Birt is not generating the correct url for assets behind a reverse proxy. It adds :80 to the url if this connector is without scheme="https" secure="true" -->
     <!-- If you want to run this container on localhost set the properties below to scheme="http" secure="false" -->
     <Connector port="8080" protocol="HTTP/1.1"
-               scheme="http" secure="false" 
+               scheme="https" secure="true" 
                connectionTimeout="20000"
                redirectPort="8443"
                maxParameterCount="1000"
