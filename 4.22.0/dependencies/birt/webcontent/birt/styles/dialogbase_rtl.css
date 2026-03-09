@@ -1,0 +1,243 @@
+/* Copyright 1994-2006, 2025 Actuate Software Corp. and others, All rights reserved. */
+
+@CHARSET "ISO-8859-1";
+
+/* Border around dialog */
+.dialogBorder
+{
+	border-style	: outset;
+	border-width	: 1px;
+	padding			: 8px 16px 8px 16px;
+	border-radius	: 8px;
+	direction		: ltr;
+}
+
+/* Title bar background area */
+.dialogTitleBar
+{
+	height			: 20px;
+	cursor			: move;	
+	direction		: rtl;
+}
+
+.dTitleBar
+{
+	position		: relative;
+	margin-top		: 8px;
+	padding			: 6px 8px 6px 16px;
+	border-radius	: 2px;
+}
+
+/* Title text */
+.dialogTitleText
+{
+	font-size		: 11pt;
+	font-weight		: bold; 
+	font-family		: arial, tahoma, verdana, sans-serif;
+}
+
+.dTitleText
+{
+	white-space		: nowrap;
+	cursor			: move;
+	padding-top		: 2px;
+}
+
+.dTitleTextContainer
+{
+	float			: right; 
+	position		: relative;
+	height			: 100%;	
+	width			: 250px;
+}
+
+/* Close button - width should match those of .dialogCloseBtnContainer */
+.dialogCloseBtn
+{
+	background-image: url("../images/Close.png");
+	width			: 14px;
+	height			: 14px;
+	background-color: gray;
+	background-size	: 14px 14px;
+	cursor			: pointer;
+	border			: 1px solid #ff7b7b;
+	border-radius	: 4px;
+}
+
+.dCloseBtn
+{
+	vertical-align: middle; 
+	background-repeat: no-repeat;
+	background-position: center right; 
+}
+
+/* Close button container - width should match those of .dialogCloseBtn */
+.dialogCloseBtnContainer
+{		
+	width: 14px;
+}
+
+.dCloseBtnContainer
+{
+	height: 100%;
+	float: left;
+	position: relative;
+}
+
+/* Background of dialog below title bar */
+.dialogBackground
+{
+	background-color:#F9F9F9;
+	margin-bottom: 1px;
+}
+
+.dBackground
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-top: 4px;
+}
+
+/* Border style of content area for individual dialog content */
+.dialogContentContainer
+{
+	direction: rtl;
+}
+
+/* Area from bottom of dialog content container to bottom border */
+.dialogBtnBarContainer
+{
+	position: relative;
+	text-align: center;
+	padding-top: 4px; /* distance from bottom of content area to top of divider bar*/
+	overflow: hidden;
+}
+
+/* Top divider line between dialog content area and button area */
+.dBtnBarDividerTop
+{
+	height: 1px;
+	background-color: gray;
+	overflow: hidden;
+}
+
+/* Bottom divider line between dialog content area and button area */
+.dBtnBarDividerBottom
+{
+	height: 1px;
+	background-color: #fefefe;
+	overflow: hidden;	
+}
+
+
+/* Area that contains OK and CANCEL buttons - from bottom of divider bar to top of outer border */
+.dialogBtnBar
+{	
+	height: 36px;
+	text-align: right;
+}
+
+/* Area holding both OK and CANCEL buttons */
+.dialogBtnBarButtonContainer
+{
+	margin-left: 0px; 
+	margin-right: auto; 
+	margin-top: 6px; 
+	margin-bottom: 7px;
+	width: 166px; 
+	height:24px;
+}
+
+/* Space between OK and CANCEL */
+.dialogBtnBarDivider
+{
+	width: 6px;
+	height: 1px;
+	float: left;
+}
+
+.dialogBtnBarButtonEnabled
+{
+	float: right;
+	cursor: pointer;
+	height: 24px;
+	width: 80px;
+	overflow: hidden;
+	color: black; /* Font color */ 
+	/*background-color: #9C9C9C;
+	background-repeat: repeat-x;
+	background-position: top left;*/
+}
+
+.dialogBtnBarButtonDisabled
+{
+	float: right;
+	cursor: default;
+	height: 24px;
+	width: 80px;
+	overflow: hidden;
+	color: #999999; /* Font color */
+}
+
+/* Left background image for OK and CANCEL buttons */
+.dialogBtnBarButtonLeftBackgroundEnabled
+{
+	background-color: #9C9C9C;
+	background-repeat: no-repeat;
+	background-position: top right;
+	position: relative;
+	width: 0px;
+	height: 24px;
+	float: right;
+}
+
+/* Left background image for OK and CANCEL buttons */
+.dialogBtnBarButtonLeftBackgroundDisabled
+{
+	background-color: #9C9C9C;
+	background-repeat: no-repeat;
+	background-position: top right;
+	position: relative;
+	width: 0px;
+	height: 24px;
+	float: right;
+}
+
+/* Right background image for OK and CANCEL buttons */
+.dialogBtnBarButtonRightBackgroundEnabled
+{
+	background-color: #9C9C9C;
+	background-repeat: no-repeat;
+	background-position: top left;
+	position: relative;
+	width: 0px;
+	height: 24px;
+	float: left;
+}
+
+/* Right background image for OK and CANCEL buttons */
+.dialogBtnBarButtonRightBackgroundDisabled
+{
+	background-color: #9C9C9C;
+	background-repeat: no-repeat;
+	background-position: top left;
+	position: relative;
+	width: 0px;
+	height: 24px;
+	float: left;
+}
+
+/* Text for OK and CANCEL buttons */
+.dialogBtnBarButtonText
+{	
+	font-family: arial, tahoma, verdana, arial, sans-serif;
+	font-size: 11px;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+}
+
+input[type=radio], input[type=checkbox]
+{
+	width: 22px;	
+}

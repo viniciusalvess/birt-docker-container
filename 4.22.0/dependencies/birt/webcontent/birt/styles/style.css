@@ -1,0 +1,868 @@
+/******************************************************************************
+ *	Copyright (c) 2004, 2025 Actuate Corporation and others.
+ *	All rights reserved. This program and the accompanying materials 
+ *	are made available under the terms of the Eclipse Public License v2.0
+ *	which accompanies this distribution, and is available at
+ *	http://www.eclipse.org/legal/epl-2.0.html
+ *	
+ *	Contributors:
+ *		Actuate Corporation - Initial implementation.
+ *****************************************************************************/
+
+.BirtViewer_Body
+{
+	margin:0px;
+}
+
+/******************************************************************************
+ * Birt error page.
+ *****************************************************************************/
+.BirtViewer_Highlight_Label
+{
+	font-family: Arial;
+	color:red;
+}
+
+/******************************************************************************
+ * Birt parameter dialog.
+ *****************************************************************************/
+.birtviewer_parameter_dialog
+{
+	height: 100%;
+	overflow: auto;
+	height: 350px;
+}
+
+.BirtViewer_parameter_dialog_Input
+{
+	font-family		: Arial;
+	font-size		: 9pt;
+	width			: 68%;
+	padding			: 4px 4px;
+	margin			: 4px 0;
+	border			: 1px solid #ccc;
+	border-radius	: 2px;
+	box-sizing		: border-box;
+}
+
+.birtviewer_parameter_dialog_Select
+{
+	font-family		: Arial;
+	font-size		: 9pt;
+	width			: 68%;
+	padding			: 4px 4px;
+	margin			: 4px 0;
+	border			: 1px solid #ccc;
+	border-radius	: 2px;
+	box-sizing		: border-box;
+}
+
+.birtviewer_parameter_dialog_Label
+{
+	font-family		: Arial;
+	font-size		: 9pt;
+}
+
+
+/******************************************************************************
+ * Birt parameter dialog, radio button: optimized layout
+ *****************************************************************************/
+[type="radio"] {
+	-webkit-appearance: none;
+}
+
+[type="radio"] {
+	width: 12px;
+	height: 12px;
+	display: inline-grid;
+	content: " ";
+	margin-right: 6px;
+	margin-bottom: 4px;
+	margin-left: 6px;
+	vertical-align: middle;
+	border: 2px solid #fff;
+	border-radius: 6px;
+	box-shadow: 0 0 0 1px #8f8f9d;
+}
+
+input[type="radio"]:checked {
+	background-color: #0160DF;
+	box-shadow: 0 0 0 1px  #0160DF;
+}
+
+
+/******************************************************************************
+ * Birt parameter dialog, checkbox: optimized layout
+ *****************************************************************************/
+[type="checkbox"] {
+	-webkit-appearance: none;
+}
+
+[type="checkbox"] {
+	width: 12px;
+	height: 12px;
+	display: inline-grid;
+	content: " ";
+	margin-right: 6px;
+	margin-bottom: 4px;
+	margin-left: 6px;
+	vertical-align: middle;
+	border: 2px solid #fff;
+	border-radius: 2px;
+	box-shadow: 0 0 0 1px #8f8f9d;
+}
+
+input[type="checkbox"]:checked {
+	background-color: #0160DF;
+	box-shadow: 0 0 0 1px  #0160DF;
+}
+
+input[type="text"]:focus {
+	outline: none !important;
+	border: 1px solid #0160DF;
+	box-shadow: 0 0 4px #719ECE;
+}
+
+/******************************************************************************
+ * Birt Exception dialog.
+ *****************************************************************************/
+.birtviewer_exception_dialog
+{
+	border-style: solid;
+	border-color: #cccccc;
+	background-color: #ffffff;
+	border-width: 1px;
+}
+
+.birtviewer_exception_dialog_container
+{
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #cccccc;
+} 
+
+.birtviewer_exception_dialog_label
+{
+	cursor: pointer;
+	font-size: 8pt;
+	color: gray;
+	font-weight: bold;
+	text-decoration: underline;
+	min-width: 164px;
+}
+
+.birtviewer_exception_dialog_copy_label
+{
+	cursor: pointer;
+	font-size: 8pt;
+	color: gray;
+	font-weight: bold;
+	display: inline-flex;
+	vertical-align: middle;
+}
+
+.birtviewer_exception_dialog_message
+{	
+	padding: 2px;
+	font-size: 9pt;
+}
+
+.birtviewer_exception_dialog_detail
+{
+	padding: 2px;
+	overflow: auto; 
+	height: 320px;
+	border-top-color: #cccccc;
+	border-top-style: solid;
+	border-top-width: 1px;
+	font-size: 8pt;
+}
+
+/******************************************************************************
+ * Birt export data dialog.
+ *****************************************************************************/
+.birtviewer_exportdata_dialog_single_select
+{
+	width		: 250px;
+	font-size	: 9pt;
+	padding		: 4px 4px 4px 8px;
+}
+
+.birtviewer_exportdata_dialog_select
+{
+	width		: 180px;
+	font-size	: 9pt;
+	padding		: 4px 4px 4px 8px;
+}
+
+.birtviewer_exportdata_dialog_button
+{
+	width			: 16px;
+	height			: 16px;
+	cursor			: pointer;
+	border			: 1px solid gray;
+	border-radius	: 4px;
+}
+
+.birtviewer_exportdata_dialog_input
+{
+	width		: 80px;
+	font-family	: Arial;
+	font-size	: 9pt;
+	border-style: inset;
+	border-width: 1px;	
+	border-radius: 4px;
+	padding		: 4px 4px 4px 8px;
+}
+
+/******************************************************************************
+ * Birt export report dialog.
+ *****************************************************************************/
+.birtviewer_exportreport_dialog_select
+{
+	width		: 200px;
+	font-family	: Arial;
+	font-size	: 9pt;
+	padding		: 4px 4px 4px 4px;
+} 
+ 
+.birtviewer_exportreport_dialog_input
+{
+	width		: 100px;
+	font-family	: Arial;
+	font-size	: 9pt;
+	border-style: inset;
+	border-width: 1px;	
+	border-radius: 4px;
+	padding		: 4px 4px 4px 8px;
+} 
+
+/******************************************************************************
+ * Birt print report dialog.
+ *****************************************************************************/
+.birtviewer_printreport_dialog_select
+{
+	width		: 150px;
+	font-family	: Arial;
+	font-size	: 9pt;
+	padding		: 4px 4px 4px 8px;
+} 
+
+.birtviewer_printreport_dialog_input
+{
+	width		: 100px;
+	font-family	: Arial;
+	font-size	: 9pt;
+	border-style: groove;
+	border-width: 1px;
+	border-radius: 4px;
+	padding		: 4px 4px 4px 8px;
+}
+
+/******************************************************************************
+ * Birt print report on the server dialog.
+ *****************************************************************************/
+.birtviewer_printreportserver_dialog_select
+{
+	width		: 200px;
+	font-family	: Arial;
+	font-size	: 9pt;
+	padding		: 4px 4px 4px 8px;
+}
+ 
+.birtviewer_printreportserver_dialog_input
+{
+	width		: 100px;
+	font-family	: Arial;
+	font-size	: 9pt;
+	border-style: groove;
+	border-width: 1px;	
+	border-radius: 4px;
+	padding		: 4px 4px 4px 8px;
+} 
+
+.birtviewer_printreportserver_dialog_input_short
+{
+	width		: 60px;
+	font-family	: Arial;
+	font-size	: 9pt;
+	border-style: groove;
+	border-width: 1px;
+	border-radius: 4px;
+	padding		: 4px 4px 4px 8px;
+} 
+
+/******************************************************************************
+ * Birt export csv dialog.
+ *****************************************************************************/
+#selectedColumnSelect, #availableColumnSelect {
+	border-radius	: 4px;
+	border-style	: inset;
+	border-width	: 1px;
+	height			: 192px;
+}
+  
+/******************************************************************************
+ * Birt confirmation dialog.
+ *****************************************************************************/
+.birtviewer_confirmation_dialog_iframe
+{
+	width: 450px;
+	height: 100px
+} 
+
+.birtviewer_progresspage
+{
+	font-family	: Arial;
+	font-size	: 9pt;
+	cursor		: default;	
+}
+  
+/******************************************************************************
+ * Dialog related.
+ *****************************************************************************/
+.birtviewer_dialog
+{
+	font-family: Arial;
+	background-color: #dbe4ee;
+	border-width: 2px;
+	border-style: outset;
+	font-size: 8pt;
+	cursor: default;
+}
+
+.birtviewer_dialog_caption
+{
+	width			: 100%;
+	font-size		: 12px;
+	color			: white;
+	background-color: #4682b4;
+}
+
+.birtviewer_dialog_body
+{
+	width			: 100%;
+	height			: 100%;
+	font-family		: Arial;
+	font-size		: 9pt;
+}
+
+.birtviewer_dialog_button
+{
+	width: 100px;
+	font-family: Arial;
+	font-size: 8pt;
+	background-color: white;
+	border-style: outset;
+	border-width: 1px;
+	cursor: pointer;
+}
+
+.birtviewer_dialog_tab_selected
+{
+	border-color: #ffffff;
+	border-width: 1px;
+	border-style: solid;
+	font-size: 7pt;
+	font-weight: bold;
+}
+
+.birtviewer_dialog_tab_normal
+{
+	border-color: white;
+	border-width: 1px;
+	border-style: solid;
+	cursor: pointer;
+	font-size: 7pt;
+	font-weight: bold;
+}
+
+/******************************************************************************
+ * Body
+ *****************************************************************************/
+.body_caption_top
+{
+	height: 4px;
+	background-color: #4682b4;
+}
+
+.body_caption
+{
+	height: 30px;
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+/******************************************************************************
+ * Toolbar
+ ******************************************************************************/
+.birtviewer_toolbar
+{
+	height: 26px;
+	background-color: #4682b4;
+	font-family: Arial;
+	font-size: 8pt;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #808080;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #808080;
+}
+
+/******************************************************************************
+ * Navigation bar
+ ******************************************************************************/
+.birtviewer_navbar
+{
+	height				: 26px;
+	background-color	: #F9F9F9;
+	font-family			: Arial;
+	font-size			: 8pt;
+	border-left-color	: #808080;
+	border-left-style	: solid;
+	border-left-width	: 1px;
+}
+
+.birtviewer_navbar_input
+{
+	font			: icon;
+	border-style	: solid;
+	border-width	: 2px;
+	height			: 18px;
+}
+
+.birtviewer_navbar_icon {
+	height			: 24px;
+	margin-top		: 2px;
+}
+
+.birtviewer_navbar_icon_medium {
+	height			: 18px;
+	margin-top		: 4px;
+	margin-left		: 8px;
+}
+
+.birtviewer_navbar_icon_small {
+	height			: 16px;
+	margin-top		: 4px;
+	margin-left		: 8px;
+}
+
+/******************************************************************************
+ * Progress bar
+ ******************************************************************************/
+.birtviewer_progressbar
+{
+	font-family		: Arial;
+	font-size		: 8pt;
+	background-color: #FFFFFF;
+	border-width	: 1px;
+	border-style	: solid;
+	border-color	: #4682B4;
+	border-radius	: 8px;
+	cursor			: default;
+	box-shadow		: 1px 1px 1px 1px silver;
+}
+
+.birtviewer_progressbar_button
+{
+	cursor: pointer;
+	height: 24px;
+	width: 100px;
+	overflow: hidden;
+	color: black;
+}
+/******************************************************************************
+ * Toc
+ ******************************************************************************/
+.birtviewer_toc
+{
+	width: 100%;
+	height: 100%;
+	background-color: #FFFFFF;
+	font-family: Arial;
+	font-size: 8pt;
+	border-width: 1px;
+	border-style: none;
+	border-color: gray;
+}
+
+/******************************************************************************
+ * Context menu
+ ******************************************************************************/
+.birtviewer_contextmenu
+{
+	width: 150px;
+	background-color: #d0d0d0;
+	border-style: outset;
+	border-color: #cccccc;
+	cursor: default;
+	border-width: 2px;
+}
+
+/******************************************************************************
+ * Birt document.
+ *****************************************************************************/
+.birtviewer_document_fragment
+{
+	overflow: auto;
+	position: relative;
+	border-style: solid;
+	border-width: 2px;
+	border-top-color: #D0D0D0;
+	border-left-color: #D0D0D0;
+	border-right-color: #D0D0D0;
+	border-bottom-color: #D0D0D0;
+}
+
+/******************************************************************************
+ * General controls
+ ******************************************************************************/
+.birtviewer_clickable
+{
+	border-style: none;
+	cursor: pointer;
+}
+
+.icon_main_functions
+{
+	height: 28px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.icon_parameter
+{
+	height: 16px;
+}
+
+.icon_parameter_group
+{
+	height: 20px;
+}
+
+.birtviewer_hidden_label 
+{
+	position: absolute;
+	left: 0px;
+	top: -100px;
+	width: 1px; 
+	height: 1px; 
+	overflow: hidden;
+}
+
+.birtviewer_exception_dialog_detail #faultdetail
+{
+	font-family: monospace;
+	direction: ltr;
+	text-align: left;
+}
+
+/******************************************************************************
+ * Birt theme mode.
+ *****************************************************************************/
+.navbar-toggle-right {
+	align-items		: center;
+	display			: flex;
+	min-width		: 0;
+	justify-content	: flex-end;
+}
+
+.toggle-frame::before {
+	position		: absolute;
+}
+
+.toggle-frame {
+	cursor			: pointer;
+	position		: relative;
+	margin-right	: 20px;
+	font-size		: 11pt;
+}
+
+.toggle-track {
+	background-color: #4d4d4d;
+	border-radius	: 30px;
+	height			: 24px;
+	transition		: 0.2s;
+	width			: 50px;
+}
+
+.toggle-icon-left {
+	align-items		: center;
+	display			: flex;
+	justify-content	: center; /* flex-end; */
+	width			: 10px;
+	height			: 10px;
+}
+
+.toggle-icon-right {
+	align-items		: center;
+	display			: flex;
+	justify-content	: center; /* flex-start; */
+	width			: 10px;
+	height			: 10px;
+}
+
+.toggle-track-dark {
+	left			: 8px;
+	opacity			: 1;
+	transition		: opacity .25s;
+	width			: 14px;
+}
+
+.toggle-track-dark, .toggle-track-light {
+	bottom			: 0;
+	height			: 10px;
+	margin			: auto 0;
+	top				: 0;
+
+	position		: absolute;
+}
+
+.toggle-track-light {
+	right			: 10px;
+	width			: 10px;
+	opacity			: 1;
+	transition		: opacity .25s;
+}
+
+.toggle-track-icon {
+	background-color: #fafafa;
+	border			: 1px solid #4d4d4d;
+	border-radius	: 50%;
+	height			: 20px;
+	width			: 20px;
+	top				: 1px;
+	left			: 1px;
+	position		: absolute;
+	transition		:.25s;
+}
+
+.toggle-track-checkbox {
+	clip				: rect(0 0 0 0);
+	border			: 0;
+	height			: 1px;
+	margin			: -1px;
+	overflow		: hidden;
+	position		: absolute;
+	width			: 1px;
+}
+
+.toggle-track-icon-checked {
+  left: 27px;
+}
+
+div[id='toggle-track-icon']:hover {
+  box-shadow: 0px 0px 4px 2px #66d4bd;
+}
+
+/******************************************************************************
+ * Theme dark mode
+ *****************************************************************************/
+.light_theme_dialog_border {
+	border-color		: silver;
+	background-color	: #F9F9F9;
+}
+
+.light_theme_dialog_title {
+	color				: #444;
+	background-color	: #ddd;
+}
+
+.dark_theme_caption, .dark_theme_dialog_border {
+	color				: white !important;
+	border-color		: silver !important;
+	background-color	: #242526 !important;
+}
+.dark_theme_toolbar {
+	background-color	: #0f3a5e !important;
+}
+
+.dark_theme_document {
+	background-color	: gray !important;
+}
+
+.dark_theme_exception_dialog {
+	background-color	: inherit !important;
+}
+
+.dark_theme_dialog_title {
+	background-color	: gray;
+	color				: #281f1f;
+}
+
+/******************************************************************************
+ * Style of the birt information dialog
+ *****************************************************************************/
+.info_dialog_light {
+	background-color: #F9F9F9;
+	border			: 1px outset silver;
+	color			: black;
+/*	box-shadow		: 2px 2px 1px 1px silver; */
+}
+
+.info_dialog_dark {
+	background-color: #242526;
+	border			: 1px outset white;
+	color			: white;
+/*	box-shadow		: 2px 2px 1px 1px gray; */
+}
+
+.info_dialog_layer {
+	font-family		: Arial;
+	font-size		: 10pt;
+	text-align		: left;
+	width			: 100%;
+	height			: 100%;
+	position		: absolute;
+	top				: 0;
+	left			: 50%;
+	transform		: translateX(-50%);
+	padding			: 48px 48px 48px 48px;
+	z-index			: 998;
+	background-color: rgba(128, 128, 128, 0.3);
+}
+
+.message_content_slot {
+	font-family		: Arial;
+	font-size		: 10pt;
+	margin			: 24px 0px 24px 20px;
+	text-decoration	: none;
+}
+
+.info_dialog_frame {
+	width			: 500px;
+	position		: absolute;
+	margin-top		: 0;
+	left			: 50%;
+	transform		: translateX(-50%);
+	border-radius	: 8px;
+	padding			: 0px 12px 24px 12px;
+	z-index			: 999;
+}
+
+.info_group_dark {
+	background-color: gray;
+	color			: #281f1f;
+}
+
+.info_group_light {
+	background-color: #ddd;
+	color			: #444;
+}
+
+.info_group_frame {
+	margin-top		: 16px;
+	padding			: 6px 8px 6px 20px;
+	border-radius	: 2px;
+	font-weight		: bold;
+	font-size		: 11pt;
+}
+
+.info_line_common {
+	height			: 1px;
+	background-color:gray;
+	border-width	: 0px;
+	margin			: 0px 16px 0px 16px;
+}
+
+.info_line_button {
+	margin-top		: 16px;
+	height			: 1px;
+	background-color:gray;
+	border-width	: 0px;
+}
+
+.doc_li_item {
+	margin-top		: 8px;
+}
+
+.doc_chapter_title {
+	font-weight		: bold;
+	margin			: 18px 0px 0px 20px;
+	font-size		: 0.9em;
+}
+
+.doc_content_slot {
+	margin			: 12px 0px 12px 36px;
+	text-decoration	: none;
+	font-size		: 0.9em;
+}
+
+.doc_link_image {
+	margin			: 0px 4px 0px 0px;
+	vertical-align	: middle;
+	height			: 12px;
+}
+
+
+a:link, a:visited, a:hover, a:active {
+	text-decoration	: none;
+	color			: #4785b8; /* #06c; */
+}
+
+.info_dialog_close		{
+	color			: #aaaaaa;
+	float			: right;
+	font-size		: 28px;
+	font-weight		: bold;
+}
+
+.info_dialog_close:hover,
+.info_dialog_close:focus {
+	color			: #000;
+	text-decoration	: none;
+	cursor			: pointer;
+}
+
+.icon_main_size {
+	height			: 30px;
+}
+
+/******************************************************************************
+ * Style of zoomer of the birt viewer
+ *****************************************************************************/
+.zoom_round_buttons {
+	display			: inline-block;
+	width			: 32px;
+	height			: 32px;
+	border			: 0.0px solid silver;
+	border-radius	: 8px;
+	color			: #1f1f1f;
+	font-weight		: bold;
+}
+
+.zoom_label_frame {
+	display				: inline-block;
+	width				: 52px;
+	height				: 32px;
+	border				: 0.5px solid #d7d7d7;
+	border-radius		: 8px;
+	font-size			: 10pt;
+	font-weight			: bold;
+	font-family			: Arial;
+	color				: #4d4d4d;
+	background-color	: #f4f4f4;
+	vertical-align		: top;
+	cursor				: pointer;
+}
+
+.zoom_frame {
+	border				: 1px solid #d6d6d6;
+	padding				: 4px 4px 4px 4px;
+	border-radius		: 8px;
+	text-align			: center;
+	position			: fixed;
+	bottom				: 16px;
+	right				: 18px;
+	z-index				: 999;
+}
+
+.zoom_frame_dark {
+	background-color	: #4d4d4d;
+}
+
+.zoom_frame_light {
+	background-color	: #f9f9f9;
+}
